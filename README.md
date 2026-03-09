@@ -2,8 +2,7 @@
 
 YuanSeq is a web-based R/Shiny platform for comprehensive bioinformatics analysis of RNA-seq and microarray data: differential expression (limma-voom / edgeR), functional enrichment (KEGG / GO / GSEA), transcription factor and pathway activity inference, and interactive visualization. Developed at Shanghai Jiao Tong University School of Pharmacy.
 
-**Repository:** [https://github.com/Passpoor/Xseq0.1](https://github.com/Passpoor/Xseq0.1)  
-*GitHub 仓库 About 可填写：* `YuanSeq: R/Shiny platform for RNA-seq & microarray analysis — differential expression, KEGG/GO/GSEA, pathway & TF activity. SJTU School of Pharmacy.`
+**Repository:** [https://github.com/Passpoor/Xseq0.1](https://github.com/Passpoor/Xseq0.1)
 
 **开发者 Developer:** 乔宇 Yu Qiao · 上海交通大学药学院 药理学博士 | School of Pharmacy, Shanghai Jiao Tong University · PhD in Pharmacology  
 
