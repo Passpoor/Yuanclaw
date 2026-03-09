@@ -1,6 +1,6 @@
-# Xseq
+# YuanSeq
 
-Xseq is a web-based R/Shiny platform for comprehensive bioinformatics analysis of RNA-seq and microarray data, offering differential expression analysis, functional enrichment (KEGG/GO/GSEA), transcription factor and pathway activity inference, and interactive visualization.
+YuanSeq is a web-based R/Shiny platform for comprehensive bioinformatics analysis of RNA-seq and microarray data, offering differential expression analysis, functional enrichment (KEGG/GO/GSEA), transcription factor and pathway activity inference, and interactive visualization.
 
 **Repository:** [https://github.com/Passpoor/Xseq0.1](https://github.com/Passpoor/Xseq0.1)
 
@@ -12,7 +12,7 @@ Xseq is a web-based R/Shiny platform for comprehensive bioinformatics analysis o
 
 ## 项目概述 | About
 
-Xseq（原 BioFastFree）是模块化的生物信息学分析平台，基于 Shiny 开发，提供从差异表达、富集分析到通路活性推断的完整流程，支持科幻主题 UI 与日夜模式切换。
+YuanSeq（源Seq）为模块化生物信息学分析平台，基于 Shiny 开发，提供从差异表达、富集分析到通路活性推断的完整流程，支持科幻主题 UI 与日夜模式切换。本项目集成 R/Bioconductor 社区开源包，饮水思源，在此致谢所有上游开发者。
 
 ---
 
@@ -48,11 +48,11 @@ cd Xseq0.1
 ```r
 install.packages(c("shiny", "shinyjs", "bslib", "ggplot2", "dplyr", "DT",
   "pheatmap", "plotly", "colourpicker", "shinyWidgets", "rlang",
-  "edgeR", "limma", "AnnotationDbi", "clusterProfiler", "decoupleR",
   "tibble", "tidyr", "ggrepel", "RColorBrewer", "VennDiagram", "grid", "gridExtra"))
 
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-BiocManager::install(c("org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot"))
+BiocManager::install(c("edgeR", "limma", "AnnotationDbi", "clusterProfiler",
+  "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot", "decoupleR", "sva"))
 
 # KEGG 本地富集（可选，推荐从 GitHub 安装）
 remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
@@ -63,6 +63,26 @@ remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
 shiny::runApp("app.R")
 ```
 或使用项目内脚本：`launch_app.R`、`run_app.bat` / `run_app.sh`。
+
+---
+
+## 饮水思源 · 致谢 | Acknowledgments
+
+YuanSeq 为集成平台，未重复造轮子，依赖并致谢以下 R/Bioconductor 开源包及社区。
+
+| 类别 | 包名 | 用途 |
+|------|------|------|
+| **框架与 UI** | [shiny](https://cran.r-project.org/package=shiny), [shinyjs](https://cran.r-project.org/package=shinyjs), [bslib](https://cran.r-project.org/package=bslib), [DT](https://cran.r-project.org/package=DT), [plotly](https://cran.r-project.org/package=plotly), [colourpicker](https://cran.r-project.org/package=colourpicker), [shinyWidgets](https://cran.r-project.org/package=shinyWidgets) | 应用框架与交互界面 |
+| **差异分析** | [edgeR](https://bioconductor.org/packages/edgeR/), [limma](https://bioconductor.org/packages/limma/) | RNA-seq / 芯片差异表达 |
+| **注释与富集** | [AnnotationDbi](https://bioconductor.org/packages/AnnotationDbi/), [org.Mm.eg.db](https://bioconductor.org/packages/org.Mm.eg.db/), [org.Hs.eg.db](https://bioconductor.org/packages/org.Hs.eg.db/), [clusterProfiler](https://bioconductor.org/packages/clusterProfiler/), [enrichplot](https://bioconductor.org/packages/enrichplot/), [GseaVis](https://bioconductor.org/packages/GseaVis/) | 基因注释、GO/KEGG/GSEA 富集与可视化 |
+| **KEGG 本地** | [biofree.qyKEGGtools](https://github.com/Passpoor/biofree.qyKEGGtools) | 本地 KEGG 富集（可选） |
+| **通路与 TF** | [decoupleR](https://bioconductor.org/packages/decoupleR/) | 通路活性、转录因子活性推断 |
+| **可视化** | [ggplot2](https://cran.r-project.org/package=ggplot2), [pheatmap](https://cran.r-project.org/package=pheatmap), [ggrepel](https://cran.r-project.org/package=ggrepel), [RColorBrewer](https://cran.r-project.org/package=RColorBrewer), [VennDiagram](https://cran.r-project.org/package=VennDiagram), [grid](https://cran.r-project.org/package=grid), [gridExtra](https://cran.r-project.org/package=gridExtra) | 图表与排版 |
+| **数据处理** | [dplyr](https://cran.r-project.org/package=dplyr), [tibble](https://cran.r-project.org/package=tibble), [tidyr](https://cran.r-project.org/package=tidyr), [rlang](https://cran.r-project.org/package=rlang), [later](https://cran.r-project.org/package=later) | 数据整理与异步 |
+
+芯片分析模块另用 [reshape2](https://cran.r-project.org/package=reshape2)、[sva](https://bioconductor.org/packages/sva/) 等。
+
+感谢 R、Bioconductor 及上述所有包的开发者与维护者。
 
 ---
 

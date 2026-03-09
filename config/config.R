@@ -3,5 +3,5 @@
 # =====================================================
 
 # 应用配置
-APP_TITLE <- "Biofree"
-APP_VERSION <- "12"
+APP_TITLE <- "YuanSeq"
+APP_VERSION <- "1"

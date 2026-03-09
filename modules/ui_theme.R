@@ -547,7 +547,7 @@ main_app_ui <- function(initial_theme) {
     title = tagList(
     # Logo显示（更大尺寸）
     tags$img(src="logo.png",
-             alt="Biofree Logo",
+             alt="YuanSeq",
              style="height: 60px; margin-right: 15px; vertical-align: middle;",
              class="img-responsive",
              id="navbar-logo",
@@ -556,7 +556,7 @@ main_app_ui <- function(initial_theme) {
     # 文字标题（logo加载失败时显示）
     tags$span(id="navbar-title",
              style="vertical-align: middle; display: none; color: #007AFF;",
-             "Biofree v12")
+             "YuanSeq")
   ),
     id = "navbar",
     theme = bslib::bs_theme(version = 5),
@@ -1424,7 +1424,9 @@ main_app_ui <- function(initial_theme) {
               tags$a(href = "https://pharm.sjtu.edu.cn/szdy/2862.html", target = "_blank", rel = "noopener noreferrer", "钱峰教授 Prof. Feng Qian"),
               "、",
               tags$a(href = "https://pharm.sjtu.edu.cn/szdy/2870.html", target = "_blank", rel = "noopener noreferrer", "孙磊教授 Prof. Lei Sun")
-      )
+      ),
+      tags$p(style = "margin: 6px 0 0 0; font-size: 11px; opacity: 0.9;",
+              "饮水思源 · 致谢 R/Bioconductor 及本平台所集成的开源包 | Thanks to R, Bioconductor & all integrated packages")
     )
   )
 }

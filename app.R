@@ -1,5 +1,5 @@
 # =====================================================
-# Xseq / BioFastFree
+# YuanSeq
 # 开发者 Developer: 乔宇 Yu Qiao
 # 上海交通大学药学院 药理学博士
 # PhD in Pharmacology, School of Pharmacy, Shanghai Jiao Tong University

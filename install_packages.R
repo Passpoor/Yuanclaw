@@ -1,5 +1,5 @@
 # =====================================================
-# RNAseq分析工具 - 包依赖安装脚本
+# YuanSeq - 包依赖安装脚本
 # =====================================================
 
 # 检查并安装CRAN包
@@ -10,7 +10,7 @@ install_cran_packages <- function() {
     "colourpicker", "shinyWidgets", "rlang",
     "tibble", "tidyr", "ggrepel", "RColorBrewer",
     "VennDiagram", "grid", "gridExtra", "svglite", "Cairo",
-    "httr", "jsonlite"
+    "httr", "jsonlite", "reshape2"
   )
 
   for (pkg in cran_packages) {
@@ -27,7 +27,8 @@ install_cran_packages <- function() {
 install_bioc_packages <- function() {
   bioc_packages <- c(
     "edgeR", "limma", "AnnotationDbi", "clusterProfiler",
-    "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot"
+    "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot",
+    "sva"
   )
 
   # 检查是否已安装BiocManager
@@ -62,18 +63,16 @@ install_decoupleR <- function() {
   }
 }
 
-# 安装biofree.qyKEGGtools包
+# 安装biofree.qyKEGGtools包（KEGG 本地富集）
 install_biofree_kegg <- function() {
   if (!require("biofree.qyKEGGtools", quietly = TRUE)) {
     if (!require("remotes", quietly = TRUE)) {
       install.packages("remotes")
     }
-    # 这里需要实际的GitHub仓库地址
-    # remotes::install_github("username/biofree.qyKEGGtools")
-    cat("注意: biofree.qyKEGGtools 需要从特定仓库安装\n")
-    cat("请手动安装: remotes::install_github('username/biofree.qyKEGGtools')\n")
+    remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
+    cat("已从 GitHub 安装 biofree.qyKEGGtools\n")
   } else {
-    cat("biofree.qyKEGGtools包已存在\n")
+    cat("biofree.qyKEGGtools 已存在\n")
   }
 }
 
