@@ -1,77 +1,76 @@
 # YuanSeq
 
-YuanSeq is a web-based R/Shiny platform for comprehensive bioinformatics analysis
-RNA-seq and microarray data: differential expression (limma-voom / edgeR), functional enrichment (KEGG / GO / GSEA),
-transcription factor and pathway activity inference, **AI-powered interpretation**, and interactive visualization.
-Developed at Shanghai Jiao Tong University School of Pharmacy.
+<div align="center">
 
-**Repository:** [https://github.com/Passpoor/Yuanseq](https://github.com/Passpoor/Yuanseq)
+**基于 R/Shiny 的综合生物信息学分析平台**
 
-**开发者 Developer:** 乔宇 Yu Qiao · 上海交通大学药学院 药理学博士 | School of Pharmacy, Shanghai Jiao Tong University · PhD in Pharmacology
+**A comprehensive bioinformatics analysis platform built with R/Shiny**
 
-**导师 Supervisors:** [钱峰教授 Prof. Feng Qian](https://pharm.sjtu.edu.cn/szdy/2862.html)、[孙磊教授 Prof. Lei Sun](https://pharm.sjtu.edu.cn/szdy/2870.html)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![R](https://img.shields.io/badge/R-%3E4.0-blue.svg)](https://www.r-project.org/)
+[![Platform](https://img.shields.io/badge/Platform-Shiny-green.svg)](https://shiny.posit.co/)
 
----
-
-## 项目概述 | About
-
-YuanSeq（源Seq）为模块化生物信息学分析平台，基于 Shiny 开发，提供从差异表达、富集分析到通路活性推断的完整流程，支持科幻主题 UI 与日夜模式切换。本项目集成 R/Bioconductor 社区开源包，饮水思源，在此致谢所有上游开发者。
+</div>
 
 ---
 
-## 功能特性 | Features
+## 📖 简介 | Introduction
 
-### 核心功能
-- **差异表达分析**: limma-voom、edgeR；支持 1v1 / nvn 比较
-- **富集分析**: KEGG（含本地/背景基因）、GO、GSEA（含 Leading Edge 与 GPSAdb 延伸提示）
-- **通路活性推断**: ULM/WMEAN/AUCell/GSVA（decoupleR），基于 KEGG 富集结果
-- **转录因子活性**: CollecTRI 网络与 decoupleR
-- **韦恩图、火山图**: 多组交集、多种差异结果格式
+**YuanSeq（源Seq）** 是一个模块化的生物信息学分析平台，提供从差异表达分析、功能富集到通路活性推断的完整流程。
 
-### 🆕 AI 解读功能
-- **多 API 支持**: OpenAI、DeepSeek、智谱AI (GLM)、本地模型、自定义 API
-- **智能解读**: 基于分析结果生成专业的生物学解读报告
-- **样本信息**: 支持输入物种、组织、处理条件等背景信息，生成针对性解读
-- **多格式导出**: Markdown、HTML（含嵌入图片）、PDF
-- **进度显示**: 实时显示分析进度
-
-### 界面与扩展
-- 科幻主题、玻璃拟态、响应式布局
-- GSEA 模块内提示可配合 [GPSAdb](https://www.gpsadb.com/) fastGPSA 做延伸分析
+**核心能力：**
+- 🔬 **差异表达分析**：limma-voom、edgeR；支持 1v1 / nvn 比较
+- 🧬 **富集分析**：KEGG（含本地/背景基因）、GO、GSEA
+- 🛤️ **通路活性推断**：ULM/WMEAN/AUCell/GSVA（decoupleR）
+- 🔬 **转录因子活性**：CollecTRI 网络与 decoupleR
+- 🤖 **AI 智能解读**：多 API 支持，生成专业生物学解读报告
+- 📊 **交互式可视化**：科幻主题 UI、玻璃拟态设计、响应式布局
 
 ---
 
-## 安装与运行 | Install & Run
+## 🚀 快速开始 | Quick Start
 
-### 要求
+### 环境要求
+
 - R >= 4.0
-- 需安装 Shiny、BiocManager 及以下依赖
+- RStudio（推荐）
 
-### 1. 克隆仓库
+### 安装步骤
+
+#### 1️⃣ 克隆仓库
+
 ```bash
 git clone https://github.com/Passpoor/Yuanseq.git
 cd Yuanseq
 ```
 
-### 2. 安装 R 包
+#### 2️⃣ 安装依赖包
+
 在 R 中执行：
+
 ```r
-install.packages(c("shiny", "shinyjs", "bslib", "ggplot2", "dplyr", "DT",
+# CRAN 包
+install.packages(c(
+  "shiny", "shinyjs", "bslib", "ggplot2", "dplyr", "DT",
   "pheatmap", "plotly", "colourpicker", "shinyWidgets", "rlang",
-  "tibble", "tidyr", "ggrepel", "RColorBrewer", "VennDiagram", "grid", "gridExtra",
-  "httr", "jsonlite", "base64enc"))
+  "tibble", "tidyr", "ggrepel", "RColorBrewer", "VennDiagram",
+  "grid", "gridExtra", "httr", "jsonlite", "base64enc"
+))
 
+# Bioconductor 包
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-BiocManager::install(c("edgeR", "limma", "AnnotationDbi", "clusterProfiler",
-  "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot", "decoupleR", "sva"))
+BiocManager::install(c(
+  "edgeR", "limma", "AnnotationDbi", "clusterProfiler",
+  "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot",
+  "decoupleR", "sva"
+))
 
-# KEGG 本地富集（可选，推荐从 GitHub 安装）
+# KEGG 本地富集（可选）
 remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
 ```
 
-### 3. 配置 AI API（可选但推荐）
+#### 3️⃣ 配置 AI API（可选）
 
-复制配置模板并填入您的 API Key：
 ```bash
 # Windows
 copy api_config.example.json %USERPROFILE%\.yuanseq\api_config.json
@@ -81,7 +80,8 @@ mkdir -p ~/.yuanseq
 cp api_config.example.json ~/.yuanseq/api_config.json
 ```
 
-编辑 `api_config.json`，填入您的 API Key：
+编辑配置文件，填入您的 API Key：
+
 ```json
 {
   "provider": "deepseek",
@@ -90,68 +90,103 @@ cp api_config.example.json ~/.yuanseq/api_config.json
 }
 ```
 
-支持的 API 提供商：
-| 提供商 | provider 值 | 推荐模型 |
-|--------|-------------|----------|
-| DeepSeek | `deepseek` | deepseek-chat |
-| OpenAI | `openai` | gpt-4o |
-| 智谱AI | `zhipu` | glm-4-flash |
-| 本地模型 | `local` | custom |
+**支持的 API 提供商：**
 
-> ⚠️ **数据安全提示**: 使用外部 API 会将分析数据发送到第三方服务器。敏感数据请使用本地模型或企业版 API。
+| 提供商 | provider | 推荐模型 | 特点 |
+|--------|----------|----------|------|
+| DeepSeek | `deepseek` | deepseek-chat | 性价比高，中文友好 |
+| OpenAI | `openai` | gpt-4o | 综合能力强 |
+| 智谱AI | `zhipu` | glm-4-flash | 国产，响应快 |
+| 本地模型 | `local` | custom | 数据不出本地 |
 
-### 4. 启动应用
+> ⚠️ **数据安全**：使用外部 API 会将数据发送到第三方服务器，敏感数据请使用本地模型。
+
+#### 4️⃣ 启动应用
+
 ```r
 shiny::runApp("app.R")
 ```
-或使用项目内脚本：`launch_app.R`、`run_app.bat` / `run_app.sh`。
 
 ---
 
-## 饮水思源 · 致谢 | Acknowledgments
+## 📋 功能详情 | Features
 
-YuanSeq 为集成平台，未重复造轮子，依赖并致谢以下 R/Bioconductor 开源包及社区。
+### 核心分析模块
+
+| 模块 | 功能 | 方法 |
+|------|------|------|
+| 差异表达 | RNA-seq / 芯片差异分析 | limma-voom, edgeR |
+| KEGG 富集 | 通路富集分析 | clusterProfiler, 本地KEGG |
+| GO 富集 | 基因本体富集 | clusterProfiler |
+| GSEA | 基因集富集分析 | GseaVis, enrichplot |
+| 通路活性 | 通路活性推断 | decoupleR |
+| TF 活性 | 转录因子活性 | decoupleR + CollecTRI |
+| 韦恩图 | 多组交集可视化 | VennDiagram |
+
+### 🆕 AI 解读功能
+
+- **多 API 支持**：OpenAI、DeepSeek、智谱AI、本地模型
+- **智能解读**：基于分析结果生成专业生物学报告
+- **样本信息**：输入物种、组织、处理条件等，生成针对性解读
+- **多格式导出**：Markdown、HTML（含嵌入图片）、PDF
+- **实时进度**：显示分析进度条
+
+---
+
+## 🙏 饮水思源 | Acknowledgments
+
+YuanSeq 是集成平台，依赖并致谢以下开源项目：
 
 | 类别 | 包名 | 用途 |
 |------|------|------|
-| **框架与 UI** | [shiny](https://cran.r-project.org/package=shiny), [shinyjs](https://cran.r-project.org/package=shinyjs), [bslib](https://cran.r-project.org/package=bslib), [DT](https://cran.r-project.org/package=DT), [plotly](https://cran.r-project.org/package=plotly), [colourpicker](https://cran.r-project.org/package=colourpicker), [shinyWidgets](https://cran.r-project.org/package=shinyWidgets) | 应用框架与交互界面 |
-| **差异分析** | [edgeR](https://bioconductor.org/packages/edgeR/), [limma](https://bioconductor.org/packages/limma/) | RNA-seq / 芯片差异表达 |
-| **注释与富集** | [AnnotationDbi](https://bioconductor.org/packages/AnnotationDbi/), [org.Mm.eg.db](https://bioconductor.org/packages/org.Mm.eg.db/), [org.Hs.eg.db](https://bioconductor.org/packages/org.Hs.eg.db/), [clusterProfiler](https://bioconductor.org/packages/clusterProfiler/), [enrichplot](https://bioconductor.org/packages/enrichplot/), [GseaVis](https://bioconductor.org/packages/GseaVis/) | 基因注释、GO/KEGG/GSEA 富集与可视化 |
-| **KEGG 本地** | [biofree.qyKEGGtools](https://github.com/Passpoor/biofree.qyKEGGtools) | 本地 KEGG 富集（可选） |
-| **通路与 TF** | [decoupleR](https://bioconductor.org/packages/decoupleR/) | 通路活性、转录因子活性推断 |
-| **可视化** | [ggplot2](https://cran.r-project.org/package=ggplot2), [pheatmap](https://cran.r-project.org/package=pheatmap), [ggrepel](https://cran.r-project.org/package=ggrepel), [RColorBrewer](https://cran.r-project.org/package=RColorBrewer), [VennDiagram](https://cran.r-project.org/package=VennDiagram), [grid](https://cran.r-project.org/package=grid), [gridExtra](https://cran.r-project.org/package=gridExtra) | 图表与排版 |
-| **数据处理** | [dplyr](https://cran.r-project.org/package=dplyr), [tibble](https://cran.r-project.org/package=tibble), [tidyr](https://cran.r-project.org/package=tidyr), [rlang](https://cran.r-project.org/package=rlang), [later](https://cran.r-project.org/package=later) | 数据整理与异步 |
-| **AI 功能** | [httr](https://cran.r-project.org/package=httr), [jsonlite](https://cran.r-project.org/package=jsonlite), [base64enc](https://cran.r-project.org/package=base64enc) | API 调用与数据导出 |
+| **框架** | [shiny](https://cran.r-project.org/package=shiny), [shinyjs](https://cran.r-project.org/package=shinyjs), [bslib](https://cran.r-project.org/package=bslib) | 应用框架 |
+| **差异分析** | [edgeR](https://bioconductor.org/packages/edgeR/), [limma](https://bioconductor.org/packages/limma/) | 差异表达 |
+| **富集分析** | [clusterProfiler](https://bioconductor.org/packages/clusterProfiler/), [enrichplot](https://bioconductor.org/packages/enrichplot/), [GseaVis](https://bioconductor.org/packages/GseaVis/) | GO/KEGG/GSEA |
+| **活性推断** | [decoupleR](https://bioconductor.org/packages/decoupleR/) | 通路/TF 活性 |
+| **可视化** | [ggplot2](https://cran.r-project.org/package=ggplot2), [pheatmap](https://cran.r-project.org/package=pheatmap), [plotly](https://cran.r-project.org/package=plotly) | 图表绑制 |
+| **AI 功能** | [httr](https://cran.r-project.org/package=httr), [jsonlite](https://cran.r-project.org/package=jsonlite) | API 调用 |
 
-芯片分析模块另用 [reshape2](https://cran.r-project.org/package=reshape2)、[sva](https://bioconductor.org/packages/sva/) 等。
-
-感谢 R、Bioconductor 及上述所有包的开发者与维护者。
+感谢 R、Bioconductor 社区及所有上游开发者！
 
 ---
 
-## 项目结构 | Structure
+## 📁 项目结构 | Structure
 
 ```
-├── app.R                 # 主入口
-├── api_config.example.json  # AI API 配置模板
-├── config/               # 配置
-├── modules/              # Shiny 模块
-│   ├── ui_theme.R        # 主题与布局
-│   ├── data_input.R      # 数据上传与注释
+Yuanseq/
+├── app.R                      # 主入口
+├── api_config.example.json    # API 配置模板
+├── modules/
+│   ├── ui_theme.R             # 主题与布局
+│   ├── data_input.R           # 数据上传
 │   ├── differential_analysis.R
 │   ├── kegg_enrichment.R
 │   ├── gsea_analysis.R
-│   ├── pathway_activity.R # 通路活性推断
+│   ├── pathway_activity.R
 │   ├── tf_activity.R
-│   ├── ai_interpretation.R # AI 解读模块
+│   ├── ai_interpretation.R    # AI 解读
 │   └── venn_diagram.R
-├── workflow/             # 工作流脚本
-├── tests/                # 测试
-└── docs/                 # 文档
+├── workflow/                  # 命令行脚本
+└── docs/                      # 文档
 ```
 
 ---
 
-## 许可证 | License
+## 👨‍💻 开发者 | Developer
 
-MIT License. See [LICENSE](LICENSE) for details.
+**乔宇 Yu Qiao**
+
+上海交通大学药学院 · 药理学博士
+
+School of Pharmacy, Shanghai Jiao Tong University · PhD in Pharmacology
+
+**导师 Supervisors：**
+
+- [钱峰教授 Prof. Feng Qian](https://pharm.sjtu.edu.cn/szdy/2862.html)
+- [孙磊教授 Prof. Lei Sun](https://pharm.sjtu.edu.cn/szdy/2870.html)
+
+---
+
+## 📄 许可证 | License
+
+[MIT License](LICENSE)
