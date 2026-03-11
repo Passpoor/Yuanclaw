@@ -1,4 +1,4 @@
-# YuanSeq
+  # YuanSeq
 
 <div align="center">
 
@@ -20,7 +20,7 @@ PhD in Pharmacology · School of Pharmacy, Shanghai Jiao Tong University
 
 </div>
 
----
+  ---
 
 ## 📖 Overview
 
@@ -46,7 +46,7 @@ YuanSeq supports downstream analysis of **single-cell RNA-seq data**:
 - Infer pathway and TF activity for each cell cluster
 - Compare biological programs across cell subpopulations
 
----
+  ---
 
 ## 🤖 AI Interpretation
 
@@ -68,7 +68,9 @@ YuanSeq integrates AI-powered biological interpretation, supporting multiple LLM
 
 > ⚠️ **Data Security**: External API calls send data to third-party servers. For sensitive data, use local models or enterprise APIs.
 
----
+  ### 界面与扩展
+  - 科幻主题、玻璃拟态、响应式布局
+  - GSEA 模块内提示可配合 [GPSAdb](https://www.gpsadb.com/) fastGPSA 做延伸分析
 
 ## 🚀 Installation & Launch
 
@@ -159,7 +161,8 @@ Edit `api_config.json`:
 shiny::runApp("app.R")
 ```
 
----
+  # KEGG 本地富集（可选，推荐从 GitHub 安装）
+  remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
 
 ## 🙏 Acknowledgments
 
@@ -177,7 +180,17 @@ YuanSeq integrates and acknowledges the following open-source projects:
 
 Thanks to R, Bioconductor, and all package developers!
 
----
+  ┌──────────┬─────────────┬───────────────┐
+  │  提供商  │ provider 值 │   推荐模型    │
+  ├──────────┼─────────────┼───────────────┤
+  │ DeepSeek │ deepseek    │ deepseek-chat │
+  ├──────────┼─────────────┼───────────────┤
+  │ OpenAI   │ openai      │ gpt-4o        │
+  ├──────────┼─────────────┼───────────────┤
+  │ 智谱AI   │ zhipu       │ glm-4-flash   │
+  ├──────────┼─────────────┼───────────────┤
+  │ 本地模型 │ local       │ custom        │
+  └──────────┴─────────────┴───────────────┘
 
 ## 📁 Project Structure
 
@@ -199,7 +212,8 @@ Yuanseq/
 └── docs/                      # Documentation
 ```
 
----
+  shiny::runApp("app.R")
+  或使用项目内脚本：launch_app.R、run_app.bat / run_app.sh。
 
 ## 📄 License
 
