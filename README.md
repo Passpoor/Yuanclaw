@@ -10,6 +10,16 @@
 [![R](https://img.shields.io/badge/R-%3E4.0-blue.svg)](https://www.r-project.org/)
 [![Platform](https://img.shields.io/badge/Platform-Shiny-green.svg)](https://shiny.posit.co/)
 
+**👨‍💻 开发者 | Developer**
+
+**乔宇 Yu Qiao**
+
+上海交通大学药学院 · 药理学博士
+
+School of Pharmacy, Shanghai Jiao Tong University · PhD in Pharmacology
+
+**导师 | Supervisors：** [钱峰教授 Prof. Feng Qian](https://pharm.sjtu.edu.cn/szdy/2862.html)、[孙磊教授 Prof. Lei Sun](https://pharm.sjtu.edu.cn/szdy/2870.html)
+
 </div>
 
 ---
@@ -169,21 +179,6 @@ Yuanseq/
 ├── workflow/                  # 命令行脚本
 └── docs/                      # 文档
 ```
-
----
-
-## 👨‍💻 开发者 | Developer
-
-**乔宇 Yu Qiao**
-
-上海交通大学药学院 · 药理学博士
-
-School of Pharmacy, Shanghai Jiao Tong University · PhD in Pharmacology
-
-**导师 Supervisors：**
-
-- [钱峰教授 Prof. Feng Qian](https://pharm.sjtu.edu.cn/szdy/2862.html)
-- [孙磊教授 Prof. Lei Sun](https://pharm.sjtu.edu.cn/szdy/2870.html)
 
 ---
 
