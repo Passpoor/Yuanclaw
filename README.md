@@ -70,14 +70,14 @@ YuanSeq integrates AI-powered biological interpretation, supporting multiple LLM
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Launch
 
 ### Requirements
 
 - R >= 4.0
 - RStudio (recommended)
 
-### Quick Start
+### Quick Start (One-Line Install)
 
 ```bash
 # Clone repository
@@ -85,8 +85,24 @@ git clone https://github.com/Passpoor/Yuanseq.git
 cd Yuanseq
 ```
 
+Open R and run:
+
 ```r
-# Install CRAN packages
+# 📦 Install all dependencies (one-line install)
+source("install.R")
+
+# 🚀 Launch app (auto-opens browser)
+source("run.R")
+```
+
+That's it! The app will automatically open in your default browser.
+
+### Manual Installation
+
+If you prefer manual installation:
+
+```r
+# CRAN packages
 install.packages(c(
   "shiny", "shinyjs", "bslib", "ggplot2", "dplyr", "DT",
   "pheatmap", "plotly", "colourpicker", "shinyWidgets", "rlang",
@@ -94,13 +110,20 @@ install.packages(c(
   "grid", "gridExtra", "httr", "jsonlite", "base64enc"
 ))
 
-# Install Bioconductor packages
+# Bioconductor packages
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 BiocManager::install(c(
   "edgeR", "limma", "AnnotationDbi", "clusterProfiler",
   "org.Mm.eg.db", "org.Hs.eg.db", "GseaVis", "enrichplot",
   "decoupleR", "sva"
 ))
+
+# Optional: Local KEGG enrichment
+remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
+
+# Launch
+shiny::runApp("app.R", launch.browser = TRUE)
+```
 
 # Optional: Local KEGG enrichment (recommended)
 remotes::install_github("Passpoor/biofree.qyKEGGtools", upgrade = "never")
